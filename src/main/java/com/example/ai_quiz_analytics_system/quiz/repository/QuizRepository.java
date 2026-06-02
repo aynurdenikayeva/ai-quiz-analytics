@@ -1,0 +1,4 @@
+package com.example.ai_quiz_analytics_system.quiz.repository;
+
+public class QuizRepository {
+}
