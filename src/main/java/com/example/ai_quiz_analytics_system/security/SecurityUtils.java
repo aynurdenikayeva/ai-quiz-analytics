@@ -2,10 +2,14 @@ package com.example.ai_quiz_analytics_system.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 
-public class SecurityUtils {
+public final class SecurityUtils {
 
-    public static String getCurrentUserEmail() {
+    private SecurityUtils() {
+    }
+
+    public static String getCurrentUsername() {
 
         Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();
@@ -14,6 +18,21 @@ public class SecurityUtils {
             return null;
         }
 
-        return authentication.getName();
+        Object principal = authentication.getPrincipal();
+
+        if (principal instanceof UserDetails userDetails) {
+            return userDetails.getUsername();
+        }
+
+        return principal.toString();
+    }
+
+    public static boolean isAuthenticated() {
+
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+
+        return authentication != null
+                && authentication.isAuthenticated();
     }
 }

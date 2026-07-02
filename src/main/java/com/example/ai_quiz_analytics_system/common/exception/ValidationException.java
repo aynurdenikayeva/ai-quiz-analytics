@@ -1,4 +1,7 @@
 package com.example.ai_quiz_analytics_system.common.exception;
 
-public class ValidationException {
+public class ValidationException extends RuntimeException {
+    public ValidationException(String message) {
+        super(message);
+    }
 }

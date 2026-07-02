@@ -1,4 +1,9 @@
 package com.example.ai_quiz_analytics_system.quiz.entity;
 
-public class Difficulty {
+public enum Difficulty {
+
+    EASY,
+    MEDIUM,
+    HARD
+
 }
